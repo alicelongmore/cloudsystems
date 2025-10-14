@@ -1,2 +1,2 @@
 # cloudsystems
-This repository is for Django Apps.
+This repository is for Django App for DCBS Module.
