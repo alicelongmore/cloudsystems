@@ -1,0 +1,84 @@
+{% extends "modreg/base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Contact Us</h1>
+
+<!-- Intro Section -->
+<div class="content-section mb-4">
+    <h4>Get in Touch</h4>
+    <p class="text-muted">
+        If you have any questions about module registration, available courses, or anything else, please use the form below to contact the university. A member of our team
+        will respond to your enquiry as soon as possible.
+    </p>
+    <p class="text-muted">
+        Before submitting an enquiry, you may also wish to check the About page or have a look through currently available modules.
+    </p>
+</div>
+
+<div class="content-section">
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                required>
+        </div>
+
+        <!-- Subject -->
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input
+                type="text"
+                class="form-control"
+                id="subject"
+                name="subject"
+                placeholder="Subject of your enquiry"
+                required>
+        </div>
+
+        <!-- Message -->
+        <div class="mb-3">
+            <label for="message" class="form-label">Your Enquiry</label>
+            <textarea
+                class="form-control"
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Enter your message here..."
+                required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">
+            Submit Enquiry
+        </button>
+    </form>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="content-section">
+    <h3>Contact Info</h3>
+    <p><strong>Email:</strong> module-registration@shu.ac.uk</p>
+    <p><strong>Phone:</strong> 0114 225 5555</p>
+</div>
+{% endblock %}

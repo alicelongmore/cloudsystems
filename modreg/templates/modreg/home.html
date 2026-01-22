@@ -1,0 +1,63 @@
+{% extends "modreg/base.html" %}
+
+{% block content %}
+
+<!-- Section 1: Welcome -->
+<div class="container my-5 p-5 bg-primary text-white rounded" id="welcome">
+    <h1>Welcome to Module Registration Services!</h1>
+    <p>
+        Here you can view available modules at Sheffield Hallam, register or unregister for modules, and access helpful resources for students.
+    </p>
+</div>
+
+<!-- Section 2: Short List of Modules -->
+<div class="container my-5 p-5 bg-secondary text-white rounded" id="modules-preview">
+    <h2>Available Modules</h2>
+    {% if modules|length > 0 %}
+        <ul class="list-group mb-2">
+            {% for module in modules|slice:":3" %}
+                <li class="list-group-item">{{ module.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'modreg:module-list' %}" class="btn btn-primary">View All Modules</a>
+    {% else %}
+        <p>No modules available at the moment.</p>
+    {% endif %}
+</div>
+
+<!-- Section 3: Student Union -->
+<div class="container my-5 p-5 bg-primary text-white rounded" id="student-union">
+    <h2>Student Union</h2>
+    <p>Sheffield Hallam offers an inclusive Student Union which is free to join for all students. The union can be found on site on campus and includes a co-working space, food swap, help centre, cafe, and bar.
+        If you'd like to learn more about joining or visiting the union, click below to view our About page.
+    </p>
+    <a href="{% url 'modreg:about' %}" class="btn btn-light">Learn More</a>
+</div>
+
+<!-- Section 4: Upcoming Events -->
+<div class="container my-5 p-5 bg-secondary text-white rounded" id="events">
+    <h2>Upcoming Events</h2>
+    <p>Stay informed about open days, registration deadlines, and available modules.
+        If you'd like to speak to a tutor or University representative, we can also point you in the right direction on our Contact page.
+    </p>
+    <a href="{% url 'modreg:contact' %}" class="btn btn-light">Contact Us for More Info</a>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+<div class="content-section">
+    <h3>Quick Links</h3>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="#modules-preview" class="text-decoration-none">Top Modules</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#student-union" class="text-decoration-none">Student Union</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#events" class="text-decoration-none">Upcoming Events</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

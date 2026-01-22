@@ -1,0 +1,71 @@
+{% extends "modreg/base.html" %}
+
+{% block content %}
+
+<!-- Section 1: Welcome -->
+<div class="container my-5 p-5 bg-primary text-white rounded" id="welcome">
+    <h1>Learn More About Sheffield Hallam University</h1>
+    <p>
+        Sheffield Hallam University is one of the UK's largest and most diverse universities: a community of around 32,000 students, 4,200 staff and 330,000 alumni around the globe.  
+        <br>
+    </br>
+        Read on to learn about the University's values, offerings, and more.
+    </p>
+</div>
+
+<!-- Section 2: Values -->
+<div class="container my-5 p-5 bg-secondary text-white rounded" id="values">
+    <h2>Our Values</h2>
+    <p>Our mission is simple: we transform lives. 
+    <br>
+    </br>
+        We are an award-winning university, recently receiving Gold in the Teaching Excellence Framework for outstanding support for student success and progression.
+    <br>
+    </br>
+        We provide people from all backgrounds with the opportunity to acquire the skills, knowledge and experience to succeed at whatever they choose to do.    
+    <br>
+    </br>
+        As one of the UK's largest and most progressive universities, our teaching, research and partnerships are characterised by a focus on real world impact - addressing the health, economic and social challenges facing society today.
+    <br>
+    </br>
+        We are ambitious for our university, our students, our colleagues, our partners, our city and our region. Our vision is to be the world's leading applied university; showing what a university genuinely focused on transforming lives can achieve. </p>
+</div>
+
+<!-- Section 3: Our Research -->
+<div class="container my-5 p-5 bg-primary text-white rounded" id="research">
+    <h2>Our Research</h2>
+    <p>Our research and innovation work is characterised by a focus on real-world impact. Working across disciplines in world-class facilities, our academics tackle challenges facing society today.
+    <br>
+    </br>
+        Our research focuses on three key themes: driving future economies, enabling healthier lives and building stronger communities. We have an international reputation in areas such as materials science, art and design, sports science and engineering, biomedicine, and economic and social research - all delivered through our research institutes.
+    </p>
+</div>
+
+<!-- Section 4: Our Teaching -->
+<div class="container my-5 p-5 bg-secondary text-white rounded" id="teaching">
+    <h2>Our Teaching</h2>
+    <p>Our committed staff provide award-winning teaching and student support for our diverse population of students. We were awarded Gold in the 2023 Teaching Excellence Framework, which recognised our outstanding support for student success both during and after their studies.
+    <br>
+    </br>
+        We provide our students with a curriculum designed for collaboration and cross-disciplinary learning, courses which are designed with industry experts, embedded work experience opportunities, digital skills pathways, and placement years. This includes a guarantee that all of our students will gain a placement during their degree through our award-winning Highly Skilled Employability strategy
+    </p>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+<div class="content-section">
+    <h3>Quick Links</h3>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="#values" class="text-decoration-none">Our Values</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#research" class="text-decoration-none">Our Research</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#teaching" class="text-decoration-none">Our Teaching</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
