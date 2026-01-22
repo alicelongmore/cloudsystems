@@ -19,3 +19,4 @@ media/
 # Env vars
 .env
 
+accessVirt/
