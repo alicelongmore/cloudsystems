@@ -1,0 +1,55 @@
+{% extends "modreg/base.html" %}
+
+{% block content %}
+<div class="content-section">
+    <h2>My Registrations</h2>
+    <hr>
+
+    <p>
+        <strong>Username:</strong> {{ user_obj.username }}
+    </p>
+
+    <p>
+        <strong>Full Name:</strong>
+        {{ user_obj.get_full_name|default:"Not provided" }}
+    </p>
+
+    <p>
+        <strong>Course:</strong>
+        {% if course %}
+            {{ course.name }}
+        {% else %}
+            You are not enrolled on a course
+        {% endif %}
+    </p>
+
+    <h4>Registered Modules</h4>
+
+    {% if modules %}
+    <ul class="list-group">
+        {% for module in modules %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{% url 'modreg:module-detail' module.code %}">
+                        {{ module.name }}
+                    </a>
+                    <span class="text-muted ms-2">
+                        (Code: {{ module.code }})
+                    </span>
+                </div>
+
+                <!-- Unregister button -->
+                <form method="post" action="{% url 'modreg:module-register' module.code %}">
+                    {% csrf_token %}
+                    <button class="btn btn-danger btn-sm">
+                        Unregister
+                    </button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You are not registered for any modules.</p>
+{% endif %}
+</div>
+{% endblock %}

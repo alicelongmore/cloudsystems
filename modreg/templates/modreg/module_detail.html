@@ -1,0 +1,123 @@
+{% extends "modreg/base.html" %}
+
+{% block content %}
+<article class="content-section">
+    <div class="article-metadata mb-2">
+        <strong>Created by:</strong> {{ object.author.username }}
+        <span class="text-muted ms-2">Module Code: {{ object.code }}</span>
+    </div>
+
+    <h2 class="article-title">
+        {{ object.name }} ({{ object.category }})
+    </h2>
+
+    <p class="article-content mt-3">
+        {{ object.description }}
+    </p>
+
+    <hr>
+
+    <p>
+        <strong>Credits:</strong> {{ object.credit }}
+    </p>
+
+    <p>
+        <strong>Availability:</strong>
+        {% if object.availability %}
+            <span class="badge bg-success">Available</span>
+        {% else %}
+            <span class="badge bg-danger">Unavailable</span>
+        {% endif %}
+    </p>
+
+    <p>
+        <strong>Courses Registered:</strong>
+        {% if object.courses_registered.all %}
+            <ul>
+            {% for group in object.courses_registered.all %}
+                <li>{{ group.name }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <span class="text-muted">No courses assigned</span>
+        {% endif %}
+    </p>
+
+    <!-- REGISTER BUTTON FOR STUDENTS -->
+    {% if user.is_authenticated and not user.is_staff %}
+    {% if object.availability %}
+    {% if user.groups.all|length > 0 %}
+        {% if user in object.students.all %}
+            <a href="{% url 'modreg:module-register' object.code %}"
+               class="btn btn-danger mt-3">
+                Unregister from Module
+            </a>
+        {% else %}
+            <a href="{% url 'modreg:module-register' object.code %}"
+               class="btn btn-success mt-3">
+                Register for Module
+            </a>
+        {% endif %}
+        {% else %}
+            <p class="text-warning mt-3">
+                You are not enrolled on any course.
+            </p>
+        {% endif %}
+        {% else %}
+            <p class="text-danger mt-3">
+                This module is currently unavailable.
+            </p>
+        {% endif %}
+        {% else %}
+            <p class="mt-3">
+                <a href="{% url 'login' %}">Log in</a> to register for this module.
+            </p>
+        {% endif %}
+
+    <!-- ADMIN CONTROLS -->
+    {% if user.is_staff %}
+        <div class="mt-3">
+            <a class="btn btn-warning btn-sm" href="{% url 'modreg:module-update' object.code %}">
+                Edit
+            </a>
+            <a class="btn btn-danger btn-sm" href="{% url 'modreg:module-delete' object.code %}">
+                Delete
+            </a>
+        </div>
+    {% endif %}
+</article>
+
+<hr>
+
+<h3>Registered Students</h3>
+
+{% if object.students.all %}
+    <div class="row">
+        {% for student in object.students.all %}
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <img
+                        src="{{ student.profile.image.url }}"
+                        class="card-img-top rounded-circle mx-auto mt-3"
+                        style="width: 120px; height: 120px; object-fit: cover;"
+                        alt="{{ student.get_full_name }}"
+                    >
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ student.get_full_name|default:student.username }}
+                        </h5>
+                        <p class="text-muted">
+                            {{ student.username }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">No students are registered for this module.</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,99 @@
+body {
+    background: #ffeef0; /* light pink background */
+    color: #5c0a3e; /* dark pink text */
+    margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #7d0f5a; /* deeper pink headings */
+}
+
+ul {
+    margin: 0;
+}
+
+.bg-steel {
+    background-color: #ff4d88; /* replaced steel with medium pink */
+}
+
+.site-header .navbar-nav .nav-link {
+    color: #ffb6c1; /* light pink links */
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ff3366; /* brighter pink on hover */
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+.content-section {
+    background: #ffffff; /* keep content white for readability */
+    padding: 10px 20px;
+    border: 1px solid #ffc0cb; /* soft pink border */
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.article-title {
+    color: #7d0f5a; /* deep pink titles */
+}
+
+a.article-title:hover {
+    color: #ff3366; /* brighter pink on hover */
+    text-decoration: none;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #ffc0cb; /* soft pink divider */
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+    color: #7d0f5a; /* match heading color */
+}
+
+.article-metadata a:hover {
+    color: #5c0a3e; /* dark pink hover */
+    text-decoration: none;
+}
+
+.banner-container {
+    width: 100%;       /* or 1200px max */
+    max-width: 1200px;
+    overflow: hidden;  /* prevents image overflow */
+    margin: 0 auto;
+}
+
+img.banner-img {
+    width: 100% !important;
+    max-height: 200px !important;
+    object-fit: cover !important;
+}
+
