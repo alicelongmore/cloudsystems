@@ -13,8 +13,12 @@ from django.contrib.auth.models import Group
 from django.http import HttpResponse
 
 
-def home(Request):
-    return render(Request, 'modreg/home.html', {'title': 'Welcome'})
+def home(request):
+    modules = Module.objects.all()  
+    context = {
+        'modules': modules
+    }
+    return render(request, 'modreg/home.html', context)
 
 def about(Request):
     return render(Request, 'modreg/about.html', {'title': 'Welcome'})
@@ -63,8 +67,8 @@ def modules(request):
 
 
 @login_required
-def toggle_module_registration(request, pk):
-    module = get_object_or_404(Module, pk=pk)
+def toggle_module_registration(request, code):
+    module = get_object_or_404(Module, code=code)
     user = request.user
 
     # Must be available

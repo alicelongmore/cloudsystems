@@ -71,6 +71,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -131,9 +132,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-#STATIC_URL = 'static/'
-#MEDIA_ROOT = BASE_DIR / 'media'
-#MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+if not DEBUG:
+    STATIC_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/static/'
+    MEDIA_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/media/'
 
 AZURE_SA_NAME = os.environ['AZURE_SA_NAME']
 AZURE_SA_KEY = os.environ['AZURE_SA_KEY']
@@ -156,8 +164,7 @@ STORAGES = {
             },
         },
     }
-STATIC_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/static/'
-MEDIA_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

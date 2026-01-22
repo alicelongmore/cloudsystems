@@ -48,12 +48,12 @@
     {% if object.availability %}
     {% if user.groups.all|length > 0 %}
         {% if user in object.students.all %}
-            <a href="{% url 'modreg:module-register' object.pk %}"
+            <a href="{% url 'modreg:module-register' object.code %}"
                class="btn btn-danger mt-3">
                 Unregister from Module
             </a>
         {% else %}
-            <a href="{% url 'modreg:module-register' object.pk %}"
+            <a href="{% url 'modreg:module-register' object.code %}"
                class="btn btn-success mt-3">
                 Register for Module
             </a>
@@ -77,10 +77,10 @@
     <!-- ADMIN CONTROLS -->
     {% if user.is_staff %}
         <div class="mt-3">
-            <a class="btn btn-warning btn-sm" href="{% url 'modreg:module-update' object.pk %}">
+            <a class="btn btn-warning btn-sm" href="{% url 'modreg:module-update' object.code %}">
                 Edit
             </a>
-            <a class="btn btn-danger btn-sm" href="{% url 'modreg:module-delete' object.pk %}">
+            <a class="btn btn-danger btn-sm" href="{% url 'modreg:module-delete' object.code %}">
                 Delete
             </a>
         </div>

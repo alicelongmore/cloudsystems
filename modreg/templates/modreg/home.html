@@ -19,7 +19,7 @@
                 <li class="list-group-item">{{ module.name }}</li>
             {% endfor %}
         </ul>
-        <a href="{% url 'modreg:module-list' %}" class="btn btn-primary">View All Modules</a>
+        <a href="{% url 'modreg:modules' %}" class="btn btn-primary">View All Modules</a>
     {% else %}
         <p>No modules available at the moment.</p>
     {% endif %}
